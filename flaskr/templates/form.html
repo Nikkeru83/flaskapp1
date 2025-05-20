@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>西原スーパーアプリ</title>
+        <link rel="stylesheet" href="css/base.css">
+    </head>
+    <body>
+        <h1>西原スーパー書店</h1>
+<form method="post" action="{{ url_for('register') }}">
+    <table border="1">
+        <tr>
+            <th>入荷日</th>
+            <th>タイトル</th>
+            <th>金額</th>
+        </tr>
+        <tr>
+            <td><input type="date" name="arrival_day" required></td>  <!-- カレンダー対応 -->
+            <td><input type="text" name="title" required></td>  
+            <td><input type="text" name="price" required></td>  
+        </tr>
+    </table>
+    <button type="submit">登録</button>
+</form>
+              
+    </body>
+</html>
