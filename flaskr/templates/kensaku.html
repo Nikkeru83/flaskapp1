@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>西原スーパーアプリ</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+
+    <h1>銘柄検索</h1>
+
+    <form method="post" action="{{ url_for('kensaku') }}">
+        <table border="1">
+            <tr>
+                <th>取得開始日</th>
+                <th>取得終了日</th>
+                <th>銘柄</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="date" name="start_date" required> <!-- カレンダー対応 -->
+                </td>
+                <td>
+                    <input type="date" name="end_date" required> <!-- カレンダー対応 -->
+                </td>
+                <td>
+                    <input type="text" name="meigara" required> <!-- 銘柄コード入力 -->
+                </td>
+            </tr>
+        </table>
+        <button type="submit">検索</button>
+    </form>
+
+\
+{% if stock_data %}
+    <h2>検索結果</h2>
+    <table border="1">
+        <tr>
+            <th>日付</th>
+            <th>始値</th>
+            <th>終値</th>
+            <th>最高値</th>
+            <th>最安値</th>
+        </tr>
+        {% for record in stock_data %}
+        <tr>
+            <td>{{ record['Date'] }}</td>
+            <td>{{ record['Open'] }}</td>
+            <td>{{ record['Close'] }}</td>
+            <td>{{ record['High'] }}</td>
+            <td>{{ record['Low'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
